@@ -1,0 +1,11 @@
+FEITO:
+    install vitest (com dom e user events)
+    install prop types
+    install router
+
+
+CONSIDER:
+    - testing component rendering, updating, logic, etc ANNDDDDD user interactions
+    - using prop types/default prop values on components
+    - using "styled-components" (CSS in JS) OR Tailwind (CSS framework) - just to get a feel of how is it like to write CSS "outside the vanilla way"
+
