@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
@@ -7,10 +6,11 @@ const Card = styled.div`
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s; /* Smooth transition for box-shadow */
+  transition: 0.3s;
 
   &:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Increases shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
+    cursor: pointer;
   }
 `;
 
@@ -26,7 +26,7 @@ const Image = styled.img`
   transition: transform 0.3s;
 
   ${Card}:hover & {
-    transform: scale(1.1); /* Zooms the image on hover */
+    transform: scale(1.1);
   }
 `;
 
