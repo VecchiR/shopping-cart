@@ -10,7 +10,7 @@ export default function ProductList({ products }) {
               key={index}
               title={product.title}
               price={product.price}
-              image={product.image}
+              imageUrl={product.image}
             />
           )
         )
