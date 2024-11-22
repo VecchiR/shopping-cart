@@ -4,6 +4,7 @@ import '../styles/bundle.js';
 import StorePage from './Pages/StorePage.jsx';
 import HomePage from './Pages/HomePage.jsx';
 import Header from './Header.jsx';
+import ProductCard from './ProductCard';
 
 export default function App() {
   const [products, setProducts] = useState(null);
@@ -15,13 +16,18 @@ export default function App() {
       .catch((error) => console.error(error));
   }, []);
 
+  // return (
+  //   <>
+  //     <Header />
+  //     <Routes>
+  //       <Route path="/" element={<HomePage />} />
+  //       <Route path="/store" element={<StorePage products={products}/>} />
+  //     </Routes>
+  //   </>
+  // );
+
   return (
-    <>
-      <Header />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/store" element={<StorePage products={products}/>} />
-      </Routes>
-    </>
-  );
+    <ProductCard title={'item1'} price={99.99} />
+  )
+
 }
