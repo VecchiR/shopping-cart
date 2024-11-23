@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Product } from '../../types';
 
 // #region Styled Components
 // const Card = styled.div`
@@ -44,17 +45,11 @@ import styled from 'styled-components';
 // `;
 // #endregion
 
-type Props = {
-  title: string;
-  price: number;
-  imageUrl?: string;
-};
-
 const ProductCard = ({
   title,
   price,
   imageUrl = '/src/assets/placeholder.png',
-}: Props) => {
+}: Product) => {
   return (
     <>
       {title && price ? (
