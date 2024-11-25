@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import { ShopContext } from './App';
 
-type Props = {}
+export default function CartBadge() {
 
-export default function CartBadge({}: Props) {
+  const { cart } = useContext(ShopContext); // We must pass the ShopContext object itself as an argument
+
+
   return (
-    <div>CartBadge</div>
-  )
+    <>
+      <div onClick={() => console.log(cart)}>CartBadge <span>{cart.length}</span></div>
+    </>
+  );
 }

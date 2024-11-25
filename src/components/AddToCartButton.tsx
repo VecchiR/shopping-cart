@@ -1,7 +1,7 @@
 
-const AddToCartButton = () => {
+const AddToCartButton = ({addProductToCart, productId}) => {
   return (
-    <button>Add to cart</button>
+    <button onClick={() => addProductToCart(productId)}>Add to cart</button>
   );
 };
 

@@ -7,9 +7,10 @@ import { MemoryRouter } from 'react-router-dom';
 
 describe('Testing conditional rendering', () => {
   const item = {
+    id: 1,
     title: 'dummy',
     price: 100,
-    imageUrl: 'http://www.example.com/123.png',
+    image: 'http://www.example.com/123.png',
     description: 'This is the description of a dummy product to test the ProductPage component',
   };
 
@@ -47,6 +48,7 @@ describe('Testing conditional rendering', () => {
 describe('Testing imageURL', () => {
 
   const itemNoImage = {
+    id: 1,
     title: 'dummy',
     price: 100,
     description: 'This is a dummy product to test the ProductPage component',
@@ -59,6 +61,7 @@ describe('Testing imageURL', () => {
   });
 
   const item = {
+    id: 1,
     title: 'dummy',
     price: 100,
     imageUrl: 'http://www.example.com/123.png',

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Product } from '../../types';
+import { Link } from 'react-router-dom';
+import AddToCartButton from './AddToCartButton';
 
 // #region Styled Components
 // const Card = styled.div`
@@ -46,17 +48,23 @@ import { Product } from '../../types';
 // #endregion
 
 const ProductCard = ({
+  id,
+  category,
   title,
   price,
-  imageUrl = '/src/assets/placeholder.png',
-}: Product) => {
+  image = '/src/assets/placeholder.png',
+  addProductToCart
+}) => {
   return (
     <>
       {title && price ? (
         <div className="product-card">
-          <img src={imageUrl} alt={title} />
-          <h3 className="product-title">{title}</h3>
+          <Link to={`/product/${id}`}>
+            <img src={image} alt={title} />
+            <h3 className="product-title">{title}</h3>
+          </Link>
           <p className="product-price">${price}</p>
+          <AddToCartButton addProductToCart={addProductToCart} productId={id}/>
         </div>
       ) : null}
     </>

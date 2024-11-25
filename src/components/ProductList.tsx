@@ -1,6 +1,6 @@
 import ProductCard from './ProductCard';
 
-export default function ProductList({ products }) {
+export default function ProductList({ products, addProductToCart }) {
   return (
     <>
       {products ? (
@@ -10,7 +10,11 @@ export default function ProductList({ products }) {
               key={index}
               title={product.title}
               price={product.price}
-              imageUrl={product.image}
+              image={product.image}
+              id={product.id}
+              category={product.category}
+              rating={product.rating}
+              addProductToCart={addProductToCart}
             />
           )
         )

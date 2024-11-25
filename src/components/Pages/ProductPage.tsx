@@ -1,27 +1,25 @@
+import { useParams } from 'react-router-dom';
 import { Product } from '../../../types/index';
 import AddToCartButton from '../AddToCartButton';
 import GoBackButton from '../GoBackButton';
+import ProductDetails from '../ProductDetails';
 
-export default function ProductPage({
-  title,
-  price,
-  description,
-  imageUrl = '/src/assets/placeholder.png',
-}: Product) {
+export default function ProductPage({ products , addProductToCart }) {
+  const { id } = useParams<{ id: string }>();
+  if (!id) {
+    return <p>Oops! Item not found</p>;
+  }
+
+  const product = products?.find((product) => product.id === parseInt(id));
+  if (!product) {
+    return <p>Oops! Item not found</p>;
+  }
+
   return (
     <>
-      {title && price ? (
-        <div>
-          <GoBackButton />
-          <img src={imageUrl} alt={title} />
-          <h1>{title}</h1>
-          <p>${price}</p>
-          <p>{description}</p>
-          <AddToCartButton />
-        </div>
-      ) : (
-        <p>Oops!</p>
-      )}
+      <GoBackButton />
+      <ProductDetails {...product}/>
+      <AddToCartButton addProductToCart={addProductToCart} productId={product.id}/>
     </>
   );
 }
