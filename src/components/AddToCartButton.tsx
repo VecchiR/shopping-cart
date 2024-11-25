@@ -1,6 +1,8 @@
 
 const AddToCartButton = () => {
-  return ();
+  return (
+    <button>Add to cart</button>
+  );
 };
 
 export default AddToCartButton;
