@@ -1,10 +1,15 @@
+import { useContext } from "react";
+import { ShopContext } from "../context/ShopContext";
+
 type Props = {
-  addProductToCart: (productId: number, quantity: number) => void;
   productId: number;
   quantity: number;
 }
 
-const AddToCartButton = ({addProductToCart, productId, quantity}: Props) => {
+const AddToCartButton = ({productId, quantity}: Props) => {
+
+  const {addProductToCart} = useContext(ShopContext);
+
   return (
     <button onClick={() => addProductToCart(productId, quantity)}>Add to cart</button>
   );

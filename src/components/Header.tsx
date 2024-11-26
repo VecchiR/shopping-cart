@@ -1,4 +1,4 @@
-import { Route, Routes, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import CartBadge from './CartBadge';
 
 export default function Header() {

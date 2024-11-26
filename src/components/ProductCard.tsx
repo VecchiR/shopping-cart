@@ -46,25 +46,21 @@ import AddToCartButton from './AddToCartButton';
 //   margin: 0;
 // `;
 // #endregion
+type Props = {
+  product: Product;
+}
 
-const ProductCard = ({
-  id,
-  category,
-  title,
-  price,
-  image = '/src/assets/placeholder.png',
-  addProductToCart
-}) => {
+const ProductCard = ({ product }: Props) => {
   return (
     <>
-      {title && price ? (
+      {product.title && product.price ? (
         <div className="product-card">
-          <Link to={`/product/${id}`}>
-            <img src={image} alt={title} />
-            <h3 className="product-title">{title}</h3>
+          <Link to={`/product/${product.id}`}>
+            <img src={product.image ?? '/src/assets/placeholder.png'} alt={product.title} />
+            <h3 className="product-title">{product.title}</h3>
           </Link>
-          <p className="product-price">${price}</p>
-          <AddToCartButton addProductToCart={addProductToCart} productId={id}/>
+          <p className="product-price">${product.price}</p>
+          <AddToCartButton productId={product.id} quantity={1}/>
         </div>
       ) : null}
     </>

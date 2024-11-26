@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import Header from '../Header';
 import GoShopButton from '../GoShopButton';
 
 export default function HomePage() {
