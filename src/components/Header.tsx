@@ -1,7 +1,7 @@
 import { Route, Routes, Link } from 'react-router-dom';
 import CartBadge from './CartBadge';
 
-export default function Header({cart}) {
+export default function Header() {
   return (
     <>
       <nav>
@@ -12,7 +12,7 @@ export default function Header({cart}) {
           <li>
             <Link to="/store">Store</Link>
           </li>
-        <CartBadge cart={cart}/>
+        <CartBadge />
         </ul>
       </nav>
     </>
