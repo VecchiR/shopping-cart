@@ -1,3 +1,4 @@
 export * from './Product';
 export * from './CartItem';
-export * from './ShopContext';
+export * from './ShopContextType';
+
