@@ -1,16 +1,20 @@
 import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
 import { Product } from '../../../types/index';
 import AddToCartButton from '../AddToCartButton';
 import GoBackButton from '../GoBackButton';
 import ProductDetails from '../ProductDetails';
+import { ShopContext } from '../../context/ShopContext';
 
-export default function ProductPage({ products , addProductToCart }) {
+export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
+  const { products } = useContext(ShopContext);
+  
   if (!id) {
     return <p>Oops! Item not found</p>;
   }
-
-  const product = products?.find((product) => product.id === parseInt(id));
+  
+  const product: Product | undefined = products?.find((product: Product) => product.id === parseInt(id));
   if (!product) {
     return <p>Oops! Item not found</p>;
   }
@@ -19,7 +23,7 @@ export default function ProductPage({ products , addProductToCart }) {
     <>
       <GoBackButton />
       <ProductDetails {...product}/>
-      <AddToCartButton addProductToCart={addProductToCart} productId={product.id}/>
+      <AddToCartButton productId={product.id} quantity={1}/>
     </>
   );
 }
