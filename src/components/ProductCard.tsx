@@ -60,7 +60,7 @@ const ProductCard = ({ product }: Props) => {
             <h3 className="product-title">{product.title}</h3>
           </Link>
           <p className="product-price">${product.price}</p>
-          <AddToCartButton productId={product.id} quantity={1}/>
+          <AddToCartButton productId={product.id}/>
         </div>
       ) : null}
     </>

@@ -23,7 +23,7 @@ export default function ProductPage() {
     <>
       <GoBackButton />
       <ProductDetails {...product}/>
-      <AddToCartButton productId={product.id} quantity={1}/>
+      <AddToCartButton productId={product.id}/>
     </>
   );
 }
