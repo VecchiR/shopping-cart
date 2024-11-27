@@ -1,20 +1,27 @@
-import { useContext } from "react";
-import { ShopContext } from "../context/ShopContext";
+import React, { useState } from 'react';
+import { useContext } from 'react';
+import { ShopContext } from '../context/ShopContext';
+import CartModal from './CartModal';
 
 type Props = {
   productId: number;
-  quantity: number;
-}
+};
 
-const AddToCartButton = ({productId, quantity}: Props) => {
+const AddToCartButton = ({ productId }: Props) => {
+  const { addProductToCart } = useContext(ShopContext);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const {addProductToCart} = useContext(ShopContext);
+  const handleAddToCart = () => {
+    addProductToCart(productId, 1);
+    setIsModalOpen(true);
+  };
 
   return (
-    <button onClick={() => addProductToCart(productId, quantity)}>Add to cart</button>
+    <>
+      <button onClick={handleAddToCart}>Add to cart</button>
+      {isModalOpen && <CartModal onClose={() => setIsModalOpen(false)} />}
+    </>
   );
 };
 
 export default AddToCartButton;
-
-
