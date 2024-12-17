@@ -1,12 +1,6 @@
 import { Product } from '../../types';
 import { Link } from 'react-router-dom';
 import AddToCartButton from './AddToCartButton';
-import {
-  ProductCardContainer,
-  ProductTitle,
-  ProductPrice,
-  ProductImage,
-} from '../styles/ProductCard.styles';
 
 type Props = {
   product: Product;
@@ -16,17 +10,17 @@ const ProductCard = ({ product }: Props) => {
   return (
     <>
       {product?.title && product?.price ? (
-        <ProductCardContainer>
+        <div>
           <Link to={`/product/${product.id}`}>
-            <ProductImage
+            <img
               src={product.image ?? '/src/assets/placeholder.png'}
               alt={product.title}
             />
-            <ProductTitle>{product.title}</ProductTitle>
+            <h2>{product.title}</h2>
           </Link>
-          <ProductPrice>${product.price.toFixed(2)}</ProductPrice>
+          <p>${product.price.toFixed(2)}</p>
           <AddToCartButton productId={product.id} />
-        </ProductCardContainer>
+        </div>
       ) : null}
     </>
   );

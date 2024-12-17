@@ -5,11 +5,7 @@ import AddToCartButton from '../AddToCartButton';
 import GoBackButton from '../GoBackButton';
 import ProductDetails from '../ProductDetails';
 import { ShopContext } from '../../context/ShopContext';
-import {
-  ProductContainer,
-  ProductImage,
-  ProductDetailsContainer,
-} from '../../styles/ProductPage.styles';
+
 
 export default function ProductPage() {
   const { id } = useParams<{ id: string }>();
@@ -29,13 +25,13 @@ export default function ProductPage() {
   return (
     <>
       <GoBackButton />
-      <ProductContainer>
-        <ProductImage src={product.image} alt={product.title} />
-        <ProductDetailsContainer>
+      <div>
+        <img src={product.image} alt={product.title} />
+        <div>
           <ProductDetails {...product} />
           <AddToCartButton productId={product.id} />
-        </ProductDetailsContainer>
-      </ProductContainer>
+        </div>
+      </div>
     </>
   );
 }

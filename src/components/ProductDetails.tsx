@@ -1,9 +1,4 @@
 import { Product } from '../../types/index';
-import {
-  ProductDetailsTitle,
-  ProductDetailsPrice,
-  ProductDetailsDescription,
-} from '../styles/ProductPage.styles';
 
 export default function ProductDetails(product: Product) {
   if (!product) {
@@ -13,9 +8,9 @@ export default function ProductDetails(product: Product) {
   return (
     <>
       <div>
-        <ProductDetailsTitle>{product.title}</ProductDetailsTitle>
-        <ProductDetailsPrice>${product.price.toFixed(2)}</ProductDetailsPrice>
-        <ProductDetailsDescription>{product.description}</ProductDetailsDescription>
+        <h2>{product.title}</h2>
+        <p>${product.price.toFixed(2)}</p>
+        <p>{product.description}</p>
       </div>
     </>
   );

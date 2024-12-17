@@ -1,14 +1,13 @@
 import GoBackButton from '../GoBackButton';
 import CartContent from '../CartContent';
-import { CartPageContainer, CartPageTitle } from '../../styles/CartPage.styles';
 
 
 export default function CartPage() {
   return (
-    <CartPageContainer>
-      <CartPageTitle>Your Cart</CartPageTitle>
+    <div>
+      <h1>Your Cart</h1>
       <GoBackButton />
       <CartContent />
-    </CartPageContainer>
+    </div>
   );
 }

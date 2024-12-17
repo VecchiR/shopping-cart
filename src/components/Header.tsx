@@ -1,21 +1,21 @@
 import { Link } from 'react-router-dom';
 import CartBadge from './CartBadge';
-import { HeaderNav, HeaderNavList, HeaderNavItem, HeaderNavLink } from '../styles/Header.styles';
 
 export default function Header() {
   return (
-    <>
-      <HeaderNav>
-        <HeaderNavList>
-          <HeaderNavItem>
-            <HeaderNavLink as={Link} to="/">Home</HeaderNavLink>
-          </HeaderNavItem>
-          <HeaderNavItem>
-            <HeaderNavLink as={Link} to="/store">Store</HeaderNavLink>
-          </HeaderNavItem>
+    <header className='p-6'>
+      <nav className='flex justify-between'>
+        <ul className='flex gap-4'>
+          <h1 className='font-bold' >Logo</h1>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/store">Store</Link>
+          </li>
+        </ul>
           <CartBadge />
-        </HeaderNavList>
-      </HeaderNav>
-    </>
+      </nav>
+    </header>
   );
 }

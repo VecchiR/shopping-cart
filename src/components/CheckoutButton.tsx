@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
-import { StyledButton } from '../styles/CheckoutButton.styles';
 
 
 
@@ -13,8 +12,8 @@ export default function CheckoutButton() {
   };
 
   return (
-    <StyledButton onClick={handleCheckout}>
+    <button onClick={handleCheckout}>
       Checkout
-    </StyledButton>
+    </button>
   );
 }
