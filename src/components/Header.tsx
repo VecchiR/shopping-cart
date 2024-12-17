@@ -3,7 +3,7 @@ import CartBadge from './CartBadge';
 
 export default function Header() {
   return (
-    <header className='p-6'>
+    <header className='p-6 sticky top-0 z-50'>
       <nav className='flex justify-between'>
         <ul className='flex gap-4'>
           <h1 className='font-bold' >Logo</h1>

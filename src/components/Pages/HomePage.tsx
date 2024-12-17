@@ -3,7 +3,7 @@ import GoShopButton from '../GoShopButton';
 
 export default function HomePage() {
   return (
-    <div className='relative flex flex-col justify-center items-center h-full'>
+    <div className='relative flex flex-col flex-1 justify-center items-center h-full'>
       <div className='absolute inset-0 bg-cover bg-[url("/src/assets/bg.jpg")] brightness-50 grayscale -z-1'></div>
       <div className='relative flex flex-col items-center z-10'>
         <h1 className='text-4xl font-bold text-slate-200'>Name of the store</h1>
