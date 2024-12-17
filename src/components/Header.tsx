@@ -1,20 +1,21 @@
 import { Link } from 'react-router-dom';
 import CartBadge from './CartBadge';
+import { HeaderNav, HeaderNavList, HeaderNavItem, HeaderNavLink } from '../styles/Header.styles';
 
 export default function Header() {
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/store">Store</Link>
-          </li>
-        <CartBadge />
-        </ul>
-      </nav>
+      <HeaderNav>
+        <HeaderNavList>
+          <HeaderNavItem>
+            <HeaderNavLink as={Link} to="/">Home</HeaderNavLink>
+          </HeaderNavItem>
+          <HeaderNavItem>
+            <HeaderNavLink as={Link} to="/store">Store</HeaderNavLink>
+          </HeaderNavItem>
+          <CartBadge />
+        </HeaderNavList>
+      </HeaderNav>
     </>
   );
 }

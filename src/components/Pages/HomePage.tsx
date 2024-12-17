@@ -1,17 +1,20 @@
 import { Link } from 'react-router-dom';
 import GoShopButton from '../GoShopButton';
+import { HomePageContainer, HomePageImage, TextContent, Title, Description } from '../../styles/HomePage.styles';
+
+
 
 export default function HomePage() {
   return (
-    <div>
-      <img src="" alt="someImage" />
-      <div className="text-content">
-        <h1>Name of the store</h1>
-        <p>Little description, slogan, whatever</p>
-      </div>
+    <HomePageContainer>
+      <HomePageImage src="" alt="someImage" />
+      <TextContent>
+        <Title>Name of the store</Title>
+        <Description>Little description, slogan, whatever</Description>
+      </TextContent>
       <Link to="/store">
         <GoShopButton />
       </Link>
-    </div>
+    </HomePageContainer>
   );
 }

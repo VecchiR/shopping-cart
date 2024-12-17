@@ -1,12 +1,16 @@
+import { SideBar, StoreContainer, ProductListContainer } from '../../styles/StorePage.styles';
 import FilterAndSort from '../FilterAndSort';
 import ProductList from '../ProductList';
 
 export default function StorePage() {
   return (
-    <div>
-      <p>THIS IS THE STOREPAGE</p>
-      <FilterAndSort />
-      <ProductList />
-    </div>
+    <StoreContainer>
+      <SideBar>
+        <FilterAndSort />
+      </SideBar>
+      <ProductListContainer>
+        <ProductList />
+      </ProductListContainer>
+    </StoreContainer>
   );
 }

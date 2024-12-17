@@ -7,11 +7,24 @@ export const ShopContext = createContext<ShopContextType>({
   addProductToCart: () => {},
   updateCartItem: () => {},
   removeCartItem: () => {},
+  sortMode: 'mostRecent',
+  setSortMode: () => {},
+  categoryFilter: '',
+  setCategoryFilter: () => {},
+  priceRange: [0, Infinity],
+  setPriceRange: () => {},
+  searchQuery: '',
+  setSearchQuery: () => {},
+  resetCart: () => {},
 });
 
 export const ShopProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [sortMode, setSortMode] = useState('mostRecent');
+  const [categoryFilter, setCategoryFilter] = useState('');
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, Infinity]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products', { mode: 'cors' })
@@ -22,6 +35,10 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
 
   const handleRemove = (productId: number) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.product.id !== productId));
+  };
+
+  const resetCart = () => {
+    setCartItems([]);
   };
 
   const handleQuantityChange = (productId: number, quantity: number) => {
@@ -66,7 +83,22 @@ export const ShopProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <ShopContext.Provider
-      value={{ products, cartItems, addProductToCart, updateCartItem, removeCartItem }}
+      value={{ 
+        products, 
+        cartItems, 
+        addProductToCart, 
+        updateCartItem, 
+        removeCartItem,
+        sortMode,
+        setSortMode,
+        resetCart,
+        categoryFilter,
+        setCategoryFilter,
+        priceRange,
+        setPriceRange,
+        searchQuery,
+        setSearchQuery
+      }}
     >
       {children}
     </ShopContext.Provider>

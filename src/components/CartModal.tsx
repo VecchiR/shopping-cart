@@ -1,6 +1,4 @@
-import React from 'react';
-import { useContext } from 'react';
-import { ShopContext } from '../context/ShopContext';
+import { CartModalContainer, CartModalContent, CloseButton } from '../styles/CartModal.styles';
 import CartContent from './CartContent';
 import ViewCartButton from './ViewCartButton';
 import { Link } from 'react-router-dom';
@@ -11,16 +9,16 @@ type Props = {
 
 const CartModal = ({ onClose }: Props) => {
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
+    <CartModalContainer>
+      <CartModalContent>
+        <CloseButton onClick={onClose}>&times;</CloseButton>
         <h1>Your Cart</h1>
         <CartContent />
         <Link to="/cart">
             <ViewCartButton />
         </Link>
-      </div>
-    </div>
+      </CartModalContent>
+    </CartModalContainer>
   );
 };
 

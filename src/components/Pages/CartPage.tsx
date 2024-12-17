@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { ShopContext } from '../../context/ShopContext';
 import GoBackButton from '../GoBackButton';
 import CartContent from '../CartContent';
+import { CartPageContainer, CartPageTitle } from '../../styles/CartPage.styles';
+
 
 export default function CartPage() {
   return (
-    <div>
-      <h1>Your Cart</h1>
+    <CartPageContainer>
+      <CartPageTitle>Your Cart</CartPageTitle>
       <GoBackButton />
       <CartContent />
-    </div>
+    </CartPageContainer>
   );
 }

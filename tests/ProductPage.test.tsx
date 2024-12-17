@@ -1,76 +1,73 @@
-import { getByRole, queryByRole, render, screen } from '@testing-library/react';
-import { it, expect, describe } from 'vitest';
-import '../types/index';
+import { render, screen } from '@testing-library/react';
+import { it, expect, describe, beforeEach } from 'vitest';
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+import { ShopContext } from '../src/context/ShopContext';
+import { Product } from '../types';
 import ProductPage from '../src/components/Pages/ProductPage';
-import { MemoryRouter } from 'react-router-dom';
 
-
-describe('Testing conditional rendering', () => {
-  const item = {
+const mockProducts: Product[] = [
+  {
     id: 1,
-    title: 'dummy',
-    price: 100,
-    image: 'http://www.example.com/123.png',
-    description: 'This is the description of a dummy product to test the ProductPage component',
-  };
+    title: 'Product 1',
+    category: 'Category 1',
+    price: 10,
+    image: 'http://example.com/product1.jpg',
+    description: 'Description for product 1',
+  },
+  {
+    id: 2,
+    title: 'Product 2',
+    category: 'Category 2',
+    price: 20,
+    image: 'http://example.com/product2.jpg',
+    description: 'Description for product 2',
+  },
+];
 
-  it('Display error message when no product object on component OR if missing title or price', () => {
-    render(
-      <MemoryRouter>
-        <ProductPage />
-      </MemoryRouter>
-    );
-    const error = screen.getByRole('paragraph');
-    expect(error).toBeInTheDocument();
-    const addToCartButton = screen.queryByRole('button');
-    expect(addToCartButton).not.toBeInTheDocument();
+describe('ProductPage', () => {
+  describe('when product is not found', () => {
+    beforeEach(() => {
+      render(
+        <MemoryRouter initialEntries={['/product/999']}>
+          <ShopContext.Provider value={{ products: mockProducts }}>
+            <Routes>
+              <Route path="/product/:id" element={<ProductPage />} />
+            </Routes>
+          </ShopContext.Provider>
+        </MemoryRouter>
+      );
+    });
+
+    it('should display "Oops! Item not found" message', () => {
+      expect(screen.getByText(/Oops! Item not found/i)).toBeInTheDocument();
+    });
   });
 
-  it('should contain title, price, description and addToCart button', () => {
-    render(
-      <MemoryRouter>
-        <ProductPage {...item} />
-      </MemoryRouter>
-    );
+  describe('when product is found', () => {
+    beforeEach(() => {
+      render(
+        <MemoryRouter initialEntries={['/product/1']}>
+          <ShopContext.Provider value={{ products: mockProducts }}>
+            <Routes>
+              <Route path="/product/:id" element={<ProductPage />} />
+            </Routes>
+          </ShopContext.Provider>
+        </MemoryRouter>
+      );
+    });
 
-    const addToCartButton = screen.queryByRole('button');
-    expect(addToCartButton).toBeInTheDocument();
+    it('should display product details', () => {
+      expect(screen.getByRole('heading', { name: /product 1/i })).toBeInTheDocument();
+      expect(screen.getByText(/Description for product 1/i)).toBeInTheDocument();
+      expect(screen.getByText(/\$10.00/i)).toBeInTheDocument();
+    });
 
-    const title = screen.getByRole('heading', {name:'dummy'});
-    const description = screen.getByText(/description/i);
-    const price = screen.getByText(/100/);
-    expect(title).toBeInTheDocument();
-    expect(description).toBeInTheDocument();
-    expect(price).toBeInTheDocument();
-  });
-});
+    it('should display the GoBackButton', () => {
+      expect(screen.getByRole('button', { name: /go back/i })).toBeInTheDocument();
+    });
 
-describe('Testing imageURL', () => {
-
-  const itemNoImage = {
-    id: 1,
-    title: 'dummy',
-    price: 100,
-    description: 'This is a dummy product to test the ProductPage component',
-  };
-
-  it('should use placeholder image if no imageUrl is specified', () => {
-    render(<ProductPage {...itemNoImage} />);
-    const testImage = document.querySelector('img') as HTMLImageElement;
-    expect(testImage.src).toContain('placeholder.png');
-  });
-
-  const item = {
-    id: 1,
-    title: 'dummy',
-    price: 100,
-    imageUrl: 'http://www.example.com/123.png',
-    description: 'This is the description of a dummy product to test the ProductPage component',
-  };
-
-  it('should use the specified imageUrl', () => {
-    render(<ProductPage {...item} />);
-    const testImage = document.querySelector('img') as HTMLImageElement;
-    expect(testImage.src).toContain(item.imageUrl);
+    it('should display the AddToCartButton', () => {
+      expect(screen.getByRole('button', { name: /add to cart/i })).toBeInTheDocument();
+    });
   });
 });

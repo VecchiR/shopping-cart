@@ -2,6 +2,9 @@ import { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import CartItemCard from './CartItemCard';
 import CheckoutButton from './CheckoutButton';
+import { CartList, CartListItem } from '../styles/CartContent.styles';
+
+
 
 const CartContent = () => {
   const { cartItems } = useContext(ShopContext);
@@ -12,11 +15,13 @@ const CartContent = () => {
         <p>Your cart is empty</p>
       ) : (
         <>
-          <ul>
+          <CartList>
             {cartItems.map((item) => (
-              <CartItemCard key={item.product.id} product={item.product} quantity={item.quantity} />
+              <CartListItem key={item.product.id}>
+                <CartItemCard product={item.product} quantity={item.quantity} />
+              </CartListItem>
             ))}
-          </ul>
+          </CartList>
           <CheckoutButton />
         </>
       )}

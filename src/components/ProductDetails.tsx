@@ -1,4 +1,9 @@
 import { Product } from '../../types/index';
+import {
+  ProductDetailsTitle,
+  ProductDetailsPrice,
+  ProductDetailsDescription,
+} from '../styles/ProductPage.styles';
 
 export default function ProductDetails(product: Product) {
   if (!product) {
@@ -7,10 +12,11 @@ export default function ProductDetails(product: Product) {
 
   return (
     <>
-      <img src={product.image} alt={product.title} />
-      <h1>{product.title}</h1>
-      <p>${product.price}</p>
-      <p>{product.description}</p>
+      <div>
+        <ProductDetailsTitle>{product.title}</ProductDetailsTitle>
+        <ProductDetailsPrice>${product.price.toFixed(2)}</ProductDetailsPrice>
+        <ProductDetailsDescription>{product.description}</ProductDetailsDescription>
+      </div>
     </>
   );
 }

@@ -6,13 +6,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 // should contain text content, image and goShop button
 
-describe('Testing HomePage', () => {
+describe('HomePage', () => {
+  beforeEach(() => {render(
+    <MemoryRouter>
+      <HomePage />
+    </MemoryRouter>
+  )});
+
   it('should contain some text and image', () => {
-    render(
-      <MemoryRouter>
-        <HomePage />
-      </MemoryRouter>
-    );
     const text = screen.getByRole('paragraph');
     const image = screen.queryByRole('img');
     expect(text).toBeInTheDocument();
@@ -20,13 +21,12 @@ describe('Testing HomePage', () => {
   });
 
   it('should contain button to go to store', () => {
-    render(
-      <MemoryRouter>
-        <HomePage />
-      </MemoryRouter>
-    );
     const btn = screen.getByRole('button');
     expect(btn).toBeInTheDocument();
   });
 
+  it('should contain a heading with the store name', () => {
+    const heading = screen.getByRole('heading', { name: /Name of the store/i });
+    expect(heading).toBeInTheDocument();
+  });
 });
