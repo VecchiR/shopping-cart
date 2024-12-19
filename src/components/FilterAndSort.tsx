@@ -51,16 +51,16 @@ export default function FilterAndSort() {
   };
 
   return (
-    <div className="sticky top-0">
-      <div className='flex flex-col sticky top-0'>
-        <select value={sortMode} onChange={handleSortChange}>
+    <div className='w-1/6 pl-6'>
+      <div className='flex flex-col sticky top-24 gap-4'>
+        <select className='p-2' value={sortMode} onChange={handleSortChange}>
           <option value="mostRecent">Most Recent</option>
           <option value="alphaAsc">Alphabetical Ascending</option>
           <option value="alphaDesc">Alphabetical Descending</option>
           <option value="priceAsc">Price Ascending</option>
           <option value="priceDesc">Price Descending</option>
         </select>
-        <select value={categoryFilter} onChange={handleCategoryChange}>
+        <select className='p-2' value={categoryFilter} onChange={handleCategoryChange}>
           <option value="">All Categories</option>
           {categories.map((category) => (
             <option key={category} value={category}>
@@ -68,10 +68,11 @@ export default function FilterAndSort() {
             </option>
           ))}
         </select>
-        <div className="price-range-container">
+        <div>
           <label>Price Range:</label>
-          <div className="range-inputs">
+          <div className='grid grid-cols-2 gap-2'>
             <input
+              className='px-2 py-1 border-2'
               type="number"
               placeholder="Min"
               min={0}
@@ -80,6 +81,7 @@ export default function FilterAndSort() {
               onBlur={priceRangeCheck}
             />
             <input
+              className='px-2 py-1 border-2'
               type="number"
               placeholder="Max"
               min={0}
@@ -89,12 +91,14 @@ export default function FilterAndSort() {
           </div>
         </div>
         <input
+                      className='px-2 py-1 border-2'
+
           type="text"
           placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <button onClick={handleClearAll}>Clear All</button>
+        <button className='border-2 p-2' onClick={handleClearAll}>Clear All</button>
       </div>
     </div>
   );

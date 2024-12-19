@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import ProductCard from './ProductCard';
 import { ShopContext } from '../context/ShopContext';
 
+
 export default function ProductList() {
   const { products, sortMode, categoryFilter, priceRange, searchQuery } = useContext(ShopContext);
 
@@ -27,13 +28,13 @@ export default function ProductList() {
     });
 
   return (
-    <div>
+    <div className='grid grid-cols-4 gap-8'>
       {filteredProducts.length > 0 ? (
         filteredProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))
       ) : (
-        <p>No products found</p>
+        <p className='text-center text-xl'>No products found</p>
       )}
     </div>
   );

@@ -42,24 +42,25 @@ const CartItemCard = ({ product, quantity }: Pick<CartItem, 'product' | 'quantit
   return (
     <>
       {quantity === 0 ? null : (
-        <div className="cart-item">
-          <span>{product.title}</span>
-          <span>${product.price.toFixed(2)}</span>
-          <div className="quantity-controls">
-            <button onClick={handleSubtractButton}>-</button>
+        <>
+          <span className='font-medium line-clamp-1'>{product.title}</span>
+          <div className="justify-self-end border-2 flex flex-row">
+            <button className='w-12' onClick={handleSubtractButton}>-</button>
             <input
+            className='w-12 text-center'
               type="text"
               value={inputValue.toString()}
               onChange={handleInputChange}
               onBlur={handleInputBlur}
             />
-            <button onClick={handleAddButton}>+</button>
+            <button className='w-12' onClick={handleAddButton}>+</button>
           </div>
-          <button onClick={handleRemove}>Remove</button>
-          <span>
+          <span>${product.price.toFixed(2)}</span>
+          <span className="justify-self-end">
             Subtotal: ${(product.price * inputValue).toFixed(2)}
           </span>
-        </div>
+          <button className='col-span-2 justify-self-end hover:underline' onClick={handleRemove}>Remove</button>
+        </>
       )}
     </>
   );

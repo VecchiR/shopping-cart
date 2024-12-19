@@ -1,5 +1,5 @@
 export default function ViewCartButton() {
     return (
-      <button>View Cart</button>
+      <button className="ml-4 hover:underline">View Cart</button>
     )
   }

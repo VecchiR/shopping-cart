@@ -1,20 +1,23 @@
 import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import CartBadge from './CartBadge';
 
 export default function Header() {
   return (
-    <header className='p-6 sticky top-0 z-50'>
-      <nav className='flex justify-between'>
-        <ul className='flex gap-4'>
-          <h1 className='font-bold' >Logo</h1>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/store">Store</Link>
-          </li>
-        </ul>
-          <CartBadge />
+    <header className="p-6 sticky top-0 z-50 bg-white">
+      <nav className="grid grid-cols-custom-layout justify-items-center justify-between items-center">
+        <div className="flex justify-self-end gap-12">
+          <NavLink to="/" className={({ isActive }) => (isActive ? 'underline' : '')}>
+            Home
+          </NavLink>
+          <NavLink to="/store" className={({ isActive }) => (isActive ? 'underline' : '')}>
+            Store
+          </NavLink>
+        </div>
+        <NavLink to="/">
+          <h1 className="font-lime font-thin text-4xl">dress.CODE</h1>
+        </NavLink>
+        <CartBadge />
       </nav>
     </header>
   );
