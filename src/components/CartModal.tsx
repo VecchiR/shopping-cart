@@ -13,7 +13,7 @@ const CartModal = ({ onClose }: Props) => {
   const { cartItems } = useContext(ShopContext);
   return (
     <div className="flex justify-center items-center fixed z-10 left-0 top-0 w-full h-full overflow-auto bg-[#0000009d]">
-      <div className="bg-white m-auto p-6 border-2 border-gray-300 w-4/5 max-w-lg opacity-100 flex flex-col items-start">
+      <div className="bg-white m-auto p-6 border-1 border-gray-300 w-4/5 max-w-lg opacity-100 flex flex-col items-start">
         <button className="leading-[0] self-end text-3xl" onClick={onClose}>
           &times;
         </button>

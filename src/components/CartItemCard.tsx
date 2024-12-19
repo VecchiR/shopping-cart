@@ -44,7 +44,7 @@ const CartItemCard = ({ product, quantity }: Pick<CartItem, 'product' | 'quantit
       {quantity === 0 ? null : (
         <>
           <span className='font-medium line-clamp-1'>{product.title}</span>
-          <div className="justify-self-end border-2 flex flex-row">
+          <div className="justify-self-end border-1 flex flex-row">
             <button className='w-12' onClick={handleSubtractButton}>-</button>
             <input
             className='w-12 text-center'

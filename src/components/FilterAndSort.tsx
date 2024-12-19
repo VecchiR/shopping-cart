@@ -72,7 +72,7 @@ export default function FilterAndSort() {
           <label>Price Range:</label>
           <div className='grid grid-cols-2 gap-2'>
             <input
-              className='px-2 py-1 border-2'
+              className='px-2 py-1 border-1'
               type="number"
               placeholder="Min"
               min={0}
@@ -81,7 +81,7 @@ export default function FilterAndSort() {
               onBlur={priceRangeCheck}
             />
             <input
-              className='px-2 py-1 border-2'
+              className='px-2 py-1 border-1'
               type="number"
               placeholder="Max"
               min={0}
@@ -91,14 +91,14 @@ export default function FilterAndSort() {
           </div>
         </div>
         <input
-                      className='px-2 py-1 border-2'
+                      className='px-2 py-1 border-1'
 
           type="text"
           placeholder="Search..."
           value={searchQuery}
           onChange={handleSearchChange}
         />
-        <button className='border-2 p-2' onClick={handleClearAll}>Clear All</button>
+        <button className='border-1 p-2' onClick={handleClearAll}>Clear All</button>
       </div>
     </div>
   );

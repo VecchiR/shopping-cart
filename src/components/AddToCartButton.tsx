@@ -18,7 +18,7 @@ const AddToCartButton = ({ productId }: Props) => {
 
   return (
     <>
-      <button className='border-2 py-2 px-4' onClick={handleAddToCart}>Add to cart</button>
+      <button className='border-1 py-2 px-4' onClick={handleAddToCart}>Add to cart</button>
       {isModalOpen && <CartModal onClose={() => setIsModalOpen(false)} />}
     </>
   );

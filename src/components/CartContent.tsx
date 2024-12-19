@@ -12,7 +12,7 @@ const CartContent = ({ isModal }: Props) => {
   return (
     <>
       {cartItems.length === 0 ? (
-        <p className={`${isModal ? '' : 'text-center text-xl'} px-1`}>Your cart is empty</p>
+        <p className={`${isModal ? 'mb-8 self-center' : 'text-center text-xl'} px-1`}>Your cart is empty</p>
       ) : (
         <>
           <ul
@@ -21,7 +21,7 @@ const CartContent = ({ isModal }: Props) => {
             } flex gap-8 flex-col mb-8 w-full scrollbar-thin `}
           >
             {cartItems.map((item) => (
-              <li className={`grid grid-cols-2 border-2 p-6 items-center ${isModal ? 'gap-2' : 'gap-4'} `} key={item.product.id}>
+              <li className={`grid grid-cols-2 border-1 p-6 items-center ${isModal ? 'gap-2' : 'gap-4'} `} key={item.product.id}>
                 <CartItemCard product={item.product} quantity={item.quantity} />
               </li>
             ))}
