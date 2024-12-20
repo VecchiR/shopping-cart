@@ -23,7 +23,7 @@ export default function Header() {
   // );
 
   return (
-    <header className='bg-white p-3'>
+    <header className='bg-white p-3 sticky top-0 z-[1]'>
       <nav className='flex justify-evenly items-center'>
         <div className='flex flex-row gap-4'>
           <NavLink to="/" className={({ isActive }) => (isActive ? 'underline' : '')}>
