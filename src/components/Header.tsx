@@ -22,10 +22,29 @@ export default function Header() {
   //   </header>
   // );
 
+  // return (
+  //   <header className='bg-white p-3 sticky top-0 z-[1]'>
+  //     <nav className='flex justify-evenly items-center'>
+  //       <div className='flex flex-row gap-4'>
+  //         <NavLink to="/" className={({ isActive }) => (isActive ? 'underline' : '')}>
+  //           Home
+  //         </NavLink>
+  //         <NavLink to="/store" className={({ isActive }) => (isActive ? 'underline' : '')}>
+  //           Store
+  //         </NavLink>
+  //       </div>
+  //       <NavLink to="/">
+  //         <h1 className='font-lime font-thin text-[1.7rem]'>dress.CODE</h1>
+  //       </NavLink>
+  //       <CartBadge />
+  //     </nav>
+  //   </header>
+  // );
+
   return (
     <header className='bg-white p-3 sticky top-0 z-[1]'>
-      <nav className='flex justify-evenly items-center'>
-        <div className='flex flex-row gap-4'>
+      <nav className='grid grid-cols-header-grid items-center gap-8'>
+        <div className='flex gap-6 justify-end'>
           <NavLink to="/" className={({ isActive }) => (isActive ? 'underline' : '')}>
             Home
           </NavLink>
@@ -34,7 +53,7 @@ export default function Header() {
           </NavLink>
         </div>
         <NavLink to="/">
-          <h1 className='font-lime font-thin text-[1.7rem]'>dress.CODE</h1>
+          <h1 className='text-center font-lime font-thin text-[1.7rem]'>dress.CODE</h1>
         </NavLink>
         <CartBadge />
       </nav>
